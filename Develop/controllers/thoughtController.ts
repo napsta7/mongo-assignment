@@ -63,8 +63,6 @@ export const deleteThought = async (req: Request, res: Response) => {
     res.status(500).json("Error:", err.message);
   }
 };
-//TODO: Create and Delete reactions
-
 //Create reaction
 export const createReaction = async (req: Request, res: Response) => {
   try {
