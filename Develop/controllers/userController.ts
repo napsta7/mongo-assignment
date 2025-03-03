@@ -44,7 +44,7 @@ export const updateUser = async (req: Request, res: Response) => {
     if (!updatedUser) {
       res.status(404).json("Error: User not found.");
     } else {
-      res.status(200).json("User successfully updated.");
+      res.status(200).json(updatedUser);
     }
   } catch (err) {
     res.status(400).json("Error:", err.message);
