@@ -31,4 +31,4 @@ router.post("/:thoughtId/reactions", createReaction);
 //DELETE to remove a reaction
 router.delete("/:thoughtId/reactions/:reactionId", deleteReaction);
 
-export default router;
+export { router as thoughtRoutes };

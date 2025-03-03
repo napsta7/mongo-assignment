@@ -31,4 +31,4 @@ router.post("/:userId/friends/:friendId", addFriend);
 // DELETE to remove a friend
 router.delete("/:userId/friends/:friendId", removeFriend);
 
-export default router;
+export { router as userRoutes };
