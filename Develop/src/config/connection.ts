@@ -1,3 +1,4 @@
+//This file establishes the connection to the database.
 import mongoose from "mongoose";
 
 const db = async (): Promise<typeof mongoose.connection> => {
