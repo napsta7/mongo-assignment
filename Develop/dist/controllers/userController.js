@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-//Read
+//Using find() to get all users.
 export const getAllUsers = async (_req, res) => {
     try {
         const users = await User.find();
@@ -9,7 +9,7 @@ export const getAllUsers = async (_req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
-//Read
+//Using findById() to get a specific user.
 export const getUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.userId)
@@ -29,7 +29,7 @@ export const getUserById = async (req, res) => {
         return;
     }
 };
-//Update
+//Using findByIdAndUpdate() to update a specific user by ID.
 export const updateUser = async (req, res) => {
     try {
         const updatedUser = await User.findByIdAndUpdate(req.params.userId, req.body, {
@@ -47,7 +47,7 @@ export const updateUser = async (req, res) => {
         res.status(400).json({ error: err.message });
     }
 };
-//Create
+//Using create() to create a new user.
 export const createUser = async (req, res) => {
     try {
         const createUser = await User.create(req.body);
@@ -57,10 +57,10 @@ export const createUser = async (req, res) => {
         res.status(400).json({ error: err.message });
     }
 };
-//Delete user
+//Using findByIdAndDelete() to delete a user by ID.
 export const deleteUser = async (req, res) => {
     try {
-        const deleteUser = await User.findOneAndDelete({ _id: req.params.userId });
+        const deleteUser = await User.findByIdAndDelete({ _id: req.params.userId });
         if (!deleteUser) {
             res.status(404).json("Error: User not found.");
         }
@@ -72,7 +72,7 @@ export const deleteUser = async (req, res) => {
         res.status(500).json({ error: "Error: " + err.message });
     }
 };
-//Add friend
+//Using findByIdAndUpdate() to add a new friend to this user.
 export const addFriend = async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -91,7 +91,7 @@ export const addFriend = async (req, res) => {
         return;
     }
 };
-//Remove friend
+//Using findByIdAndUpdate to pull (remove) a friend from this user.
 export const removeFriend = async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -101,7 +101,7 @@ export const removeFriend = async (req, res) => {
             res.status(404).json("Error: User not found.");
         }
         else {
-            res.status(200).json("User deleted successfully.");
+            res.status(200).json(updatedUser);
             return;
         }
     }

@@ -117,7 +117,7 @@ export const removeFriend = async (
     if (!updatedUser) {
       res.status(404).json("Error: User not found.");
     } else {
-      res.status(200).json("User deleted successfully.");
+      res.status(200).json(updatedUser);
       return;
     }
   } catch (err: any) {

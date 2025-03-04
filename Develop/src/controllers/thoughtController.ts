@@ -101,7 +101,7 @@ export const deleteReaction = async (
     const updatedThought = await Thought.findByIdAndUpdate(
       thoughtId,
       {
-        $pull: { reactions: { reactionId } },
+        $pull: { reactions: { _id: reactionId } }, // Match by _id
       },
       { new: true }
     );
@@ -113,6 +113,5 @@ export const deleteReaction = async (
     }
   } catch (err: any) {
     res.status(500).json({ error: err.message });
-    return;
   }
 };
